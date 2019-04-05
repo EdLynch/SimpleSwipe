@@ -1,0 +1,89 @@
+<head>
+	<script src="./SimpleSwipe.js"></script>
+	<script>
+		var currentLeftMargin = -100;
+		var maxLeftMargin = -200;
+		var minLeftMargin = 0;
+		function leftSwipe(){
+			console.log("right");
+			let pageCont = document.getElementById("pageContainer");
+			if(currentLeftMargin<minLeftMargin){
+				currentLeftMargin+=100;
+				let newMargin = currentLeftMargin+"%";
+				pageCont.style.marginLeft = newMargin;
+			}
+		}
+		function rightSwipe(){
+			console.log("left");
+			let pageCont = document.getElementById("pageContainer");
+			if(currentLeftMargin>maxLeftMargin){
+				currentLeftMargin-=100;
+				let newMargin = currentLeftMargin+"%";
+				pageCont.style.marginLeft = newMargin;
+			}
+		}
+		var swipe = new swipeListener(document,rightSwipe,leftSwipe,50);
+		
+		/*
+			0:0
+			1:-100
+			2:-200
+		*/
+	</script>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+		}
+		#viewport{
+			width:80%;
+			height:60%;
+			display:block;
+			border:3vmin solid #ffbd45;
+			margin:0 auto;
+			overflow:hidden;
+		}
+		#pageContainer{
+			width:302%;
+			margin-left:-100%;
+			height:100%;
+			transition: all 1s;
+		}
+		.page{
+			width: 33.12222%;
+			height: 100%;
+			text-align: center;
+			font-size: 10em;
+			font-family: monospace;
+			color: white;
+			display: inline-block;
+			float: left;
+			line-height: 50vh;
+			user-select: none;
+		}
+		#page1{
+			background:#FC4445;
+		}
+		#page2{
+			background:#3FEEE6;
+		}
+		#page3{
+			background:#9aff8f;
+		}
+	</style>
+</head>
+<body>
+	<div id="viewport">
+		<div id="pageContainer">
+			<div id="page1" class="page">
+				Page 1
+			</div>
+			<div id="page2" class="page">
+				Page 2
+			</div>
+			<div id="page3" class="page">
+				Page 3
+			</div>
+		</div>
+	</div>
+</body>
